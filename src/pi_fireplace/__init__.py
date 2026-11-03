@@ -1,0 +1,1 @@
+"""Pi Fireplace application."""
