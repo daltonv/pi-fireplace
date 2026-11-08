@@ -55,3 +55,13 @@ async def test_pause(mpv_client: MpvClient):
     await mpv_client.pause()
 
     assert await mpv_client.get_property("pause") is True
+
+
+async def test_pause_twice(mpv_client: MpvClient):
+    """Setting pause twice should keep it paused with no error."""
+    await mpv_client.set_property("pause", False)
+
+    await mpv_client.pause()
+    await mpv_client.pause()
+
+    assert await mpv_client.get_property("pause") is True
